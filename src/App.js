@@ -40,16 +40,16 @@ function App() {
         {/* Placeholder content before the animation completes */}
         {!containerVisible && (
           <div className="placeholder">
-            <p>Placeholder content until animation completes...</p>
+            <p></p>
           </div>
         )}
-
-{containerVisible && (
+          {containerVisible && (
           <div className="placeholder">
-            <p>Placeholder content until animation completes...</p>
+            <p></p>
           </div>
         )}
 
+      
 
         {/* Footer remains at the bottom */}
         <footer className="footer">
