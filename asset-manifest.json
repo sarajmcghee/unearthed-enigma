@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/unearthed-enigma/static/css/main.e6c13ad2.css",
-    "main.js": "/unearthed-enigma/static/js/main.28109538.js",
+    "main.css": "/unearthed-enigma/static/css/main.52d013a5.css",
+    "main.js": "/unearthed-enigma/static/js/main.f071675b.js",
     "static/js/453.6bbb845f.chunk.js": "/unearthed-enigma/static/js/453.6bbb845f.chunk.js",
     "index.html": "/unearthed-enigma/index.html",
-    "main.e6c13ad2.css.map": "/unearthed-enigma/static/css/main.e6c13ad2.css.map",
-    "main.28109538.js.map": "/unearthed-enigma/static/js/main.28109538.js.map",
+    "main.52d013a5.css.map": "/unearthed-enigma/static/css/main.52d013a5.css.map",
+    "main.f071675b.js.map": "/unearthed-enigma/static/js/main.f071675b.js.map",
     "453.6bbb845f.chunk.js.map": "/unearthed-enigma/static/js/453.6bbb845f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.28109538.js"
+    "static/css/main.52d013a5.css",
+    "static/js/main.f071675b.js"
   ]
 }
