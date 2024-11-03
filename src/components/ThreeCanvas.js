@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import React, { useRef, useEffect } from 'react';
+import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { AnimationMixer } from 'three';
 
 const Scene = ({ animationProgress }) => {
-  const gltf = useLoader(GLTFLoader, '/artworkcan.glb'); // Ensure path is correct
+  const gltf = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/artworkcan.glb');
   const mixer = useRef();
   const action = useRef();
 
@@ -16,7 +16,6 @@ const Scene = ({ animationProgress }) => {
     }
   }, [gltf]);
 
-  // Use the `animationProgress` prop to set the animation time based on scroll
   useEffect(() => {
     if (action.current) {
       action.current.time = animationProgress * action.current.getClip().duration;
@@ -27,28 +26,24 @@ const Scene = ({ animationProgress }) => {
   return <primitive object={gltf.scene} />;
 };
 
-const ThreeCanvas = () => {
-  const [animationProgress, setAnimationProgress] = useState(0);
-
+const ThreeCanvas = ({ animationProgress, setAnimationProgress }) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const scrollMax = document.body.scrollHeight - window.innerHeight;
-
-      // Calculate progress as a value between 0 and 1 based on scroll position
-      const progress = Math.min(1, Math.max(0, scrollY / scrollMax));
-      setAnimationProgress(progress);
+      const targetScroll = 500;
+      const progress = Math.min(1, Math.max(0, scrollY / targetScroll));
+      setAnimationProgress(progress); // Update App with current progress
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [setAnimationProgress]);
 
   return (
-    <Canvas style={{ width: '100vw', height: '100vh' }}>
-      <ambientLight intensity={10} /> {/* Adjusted to intensity of 10 */}
-      <directionalLight position={[5, 5, 5]} intensity={10} /> {/* Adjusted to intensity of 10 */}
-      <pointLight position={[-5, 5, 5]} intensity={1} /> {/* Optional: adjust as needed */}
+    <Canvas style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }}>
+      <ambientLight intensity={10} />
+      <directionalLight position={[5, 5, 5]} intensity={10} />
+      <pointLight position={[-5, 5, 5]} intensity={1} />
       <Scene animationProgress={animationProgress} />
     </Canvas>
   );
