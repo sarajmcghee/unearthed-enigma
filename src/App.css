@@ -48,12 +48,12 @@
   margin: 20px 0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  opacity: 1; /* Set opacity to fully visible */
+  opacity: .5; /* Set opacity to fully visible */
   transform: translateY(0); /* Ensure sections are in place */
 }
 
 
 .content-section.fade-in {
-  opacity: 1; /* Fully visible when intersecting */
+  opacity: .5; /* Fully visible when intersecting */
   transform: translateY(0); /* Reset position */
 }
