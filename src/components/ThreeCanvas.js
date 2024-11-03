@@ -19,7 +19,7 @@ const Scene = ({ animationProgress }) => {
   useEffect(() => {
     if (action.current) {
       action.current.time = animationProgress * action.current.getClip().duration;
-      mixer.current.update(0); // Required to refresh the animation frame
+      mixer.current.update(0);
     }
   }, [animationProgress]);
 
@@ -32,7 +32,7 @@ const ThreeCanvas = ({ animationProgress, setAnimationProgress }) => {
       const scrollY = window.scrollY;
       const targetScroll = 500;
       const progress = Math.min(1, Math.max(0, scrollY / targetScroll));
-      setAnimationProgress(progress); // Update App with current progress
+      setAnimationProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -40,7 +40,17 @@ const ThreeCanvas = ({ animationProgress, setAnimationProgress }) => {
   }, [setAnimationProgress]);
 
   return (
-    <Canvas style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }}>
+    <Canvas
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0, // Ensures canvas is above sections but behind other content
+        pointerEvents: 'none',
+      }}
+    >
       <ambientLight intensity={10} />
       <directionalLight position={[5, 5, 5]} intensity={10} />
       <pointLight position={[-5, 5, 5]} intensity={1} />

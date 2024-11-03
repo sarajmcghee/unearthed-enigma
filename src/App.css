@@ -37,23 +37,70 @@
   }
 }
 
-/* App.css */
-
-/* App.css */
-
-.content-section {
-  padding: 50px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.95);
-  margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  opacity: .5; /* Set opacity to fully visible */
-  transform: translateY(0); /* Ensure sections are in place */
+/* Main container for sections and footer */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the footer stays at the bottom */
 }
 
+/* Placeholder content styling */
+.placeholder {
+  height: 200vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+}
 
-.content-section.fade-in {
-  opacity: .5; /* Fully visible when intersecting */
-  transform: translateY(0); /* Reset position */
+/* Container for the sections that appear as though "poured" from the can */
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(255, 235, 59, 0.1); /* Light yellow to mimic "spilled paint" */
+  animation: fadeIn 1s ease-out;
+}
+
+/* Spacer to push sections container down initially */
+.spacer {
+  height: 50vh; /* Pushes sections down to give the impression they flow from the can */
+}
+
+/* Individual sections within the container */
+.content-section {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px 0;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Fade in sections as they become visible */
+.content-section:nth-child(-n + var(--visibleSections)) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer, stays at the bottom */
+.footer {
+  margin-top: auto; /* Pushes footer to the bottom of the main container */
+  padding: 50px;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
